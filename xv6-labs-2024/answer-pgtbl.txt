@@ -1,0 +1,2 @@
+Trả lời câu hỏi 4.1: Trong xv6, các syscall có thể tăng tốc tương tự `ugetpid` là những syscall chỉ cần đọc một vài giá trị mà kernel có thể chia sẻ qua trang chỉ-đọc: ví dụ `uptime` (đọc ticks), hoặc nếu có thêm `getppid`/`getuid` thì cũng làm được.
+Ý tưởng là kernel cập nhật các trường đó trong một trang chia sẻ (map vào user với quyền chỉ-đọc), user đọc trực tiếp không cần trap vào kernel, giảm chi phí context switch và trả về nhanh hơn. Các syscall có tác dụng phụ (I/O, cấp phát bộ nhớ, đổi trạng thái) thì không áp dụng.
