@@ -84,7 +84,7 @@ print_kpgtbl()
 }
 
 
-void
+void 
 supercheck(uint64 s)
 {
   pte_t last_pte = 0;
